@@ -1,978 +1,187 @@
 "use client";
 
-import { Button, useMediaQuery } from "@relume_io/relume-ui";
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
-import { RxChevronDown } from "react-icons/rx";
+import { useNavigate } from "react-router-dom";
 
-const useRelume = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const isMobile = useMediaQuery("(max-width: 991px)");
-  const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
-  const openOnMobileDropdownMenu = () => {
-    setIsDropdownOpen((prev) => !prev);
-  };
-  const openOnDesktopDropdownMenu = () => {
-    !isMobile && setIsDropdownOpen(true);
-  };
-  const closeOnDesktopDropdownMenu = () => {
-    !isMobile && setIsDropdownOpen(false);
-  };
-  const animateMobileMenu = isMobileMenuOpen ? "open" : "close";
-  const animateMobileMenuButtonSpan = isMobileMenuOpen
-    ? ["open", "rotatePhase"]
-    : "closed";
-  const animateDropdownMenu = isDropdownOpen ? "open" : "close";
-  const animateDropdownMenuIcon = isDropdownOpen ? "rotated" : "initial";
-  return {
-    toggleMobileMenu,
-    openOnDesktopDropdownMenu,
-    closeOnDesktopDropdownMenu,
-    openOnMobileDropdownMenu,
-    animateMobileMenu,
-    animateMobileMenuButtonSpan,
-    animateDropdownMenu,
-    animateDropdownMenuIcon,
-  };
-};
+const damenLinks = [
+  { label: "Neue Kollektionen", href: "/damen" },
+  { label: "Nachtwäsche",       href: "/nachtwaesche" },
+  { label: "Unterwäsche",       href: "/unterwaesche" },
+  { label: "Dessous & Lingerie",href: "/dessous-lingerie" },
+  { label: "Bademode",          href: "/bademode" },
+  { label: "Italienische Mode", href: "/italienische-mode" },
+];
 
-export function Navbar7() {
-  const useActive = useRelume();
+const herrenLinks = [
+  { label: "Neue Kollektionen", href: "/herren" },
+  { label: "Nachtwäsche",       href: "/herren-nachtwaesche" },
+  { label: "Unterwäsche",       href: "/herren-unterwaesche" },
+  { label: "Bademode",          href: "/herren-bademode" },
+  { label: "Italienische Mode", href: "/herren-italienische-mode" },
+];
+
+const simpleLinks = [
+  { label: "Angebote",  href: "/highlights-angebote" },
+  { label: "Boutique",  href: "/boutique" },
+  { label: "Journal",   href: "/journal" },
+];
+
+function DropdownMenu({ links, allHref, navigate }) {
   return (
-    <section
-      id="relume"
-      className="relative z-[999] flex min-h-16 w-full items-center border-b border-border-primary bg-background-primary px-[5%] md:min-h-18"
+    <motion.div
+      initial={{ opacity: 0, y: 6 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 6 }}
+      transition={{ duration: 0.15 }}
+      className="absolute top-full left-0 mt-0 w-56 border border-gray-200 bg-white shadow-lg"
     >
-      <div className="mx-auto flex size-full max-w-full items-center justify-between">
-        <a href="#">
-          <img
-            src="https://d22po4pjz3o32e.cloudfront.net/logo-image.svg"
-            alt="Logo image"
-          />
-        </a>
-        <div className="absolute hidden h-screen overflow-auto border-b border-border-primary bg-background-primary px-[5%] pb-24 pt-4 md:pb-0 lg:static lg:ml-6 lg:flex lg:h-auto lg:flex-1 lg:items-center lg:justify-between lg:border-none lg:bg-none lg:px-0 lg:pt-0">
-          <div className="flex flex-col items-center lg:flex-row">
-            <a
-              href="#"
-              className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
-            >
-              Damen
-            </a>
-            <a
-              href="#"
-              className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
-            >
-              Herren
-            </a>
-            <a
-              href="#"
-              className="relative block w-auto py-3 text-md lg:inline-block lg:px-4 lg:py-6 lg:text-base"
-            >
-              Marken
-            </a>
-            <div
-              onMouseEnter={useActive.openOnDesktopDropdownMenu}
-              onMouseLeave={useActive.closeOnDesktopDropdownMenu}
-            >
-              <button
-                className="relative flex w-full items-center justify-between whitespace-nowrap py-3 text-md lg:w-auto lg:justify-start lg:gap-2 lg:px-4 lg:py-6 lg:text-base"
-                onClick={useActive.openOnMobileDropdownMenu}
-              >
-                <span>Mehr</span>
-                <motion.span
-                  animate={useActive.animateDropdownMenuIcon}
-                  variants={{
-                    rotated: { rotate: 180 },
-                    initial: { rotate: 0 },
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <RxChevronDown />
-                </motion.span>
-              </button>
-              <AnimatePresence>
-                <motion.nav
-                  variants={{
-                    open: {
-                      opacity: 1,
-                      height: "var(--height-open, auto)",
-                      display: "block",
-                    },
-                    close: {
-                      opacity: 0,
-                      height: "var(--height-close, 0)",
-                      display: "none",
-                    },
-                  }}
-                  animate={useActive.animateDropdownMenu}
-                  initial="close"
-                  exit="close"
-                  transition={{ duration: 0.2 }}
-                  className="bottom-auto left-0 top-full w-full min-w-full max-w-full overflow-hidden bg-background-primary lg:absolute lg:w-screen lg:border-b lg:border-border-primary lg:px-[5%] lg:[--height-close:auto]"
-                >
-                  <div className="mx-auto flex size-full max-w-full items-center justify-between">
-                    <div className="flex w-full flex-col lg:flex-row">
-                      <div className="grid flex-1 grid-cols-1 content-start items-start gap-x-8 gap-y-6 py-4 md:grid-cols-2 md:py-8 lg:auto-cols-fr lg:grid-cols-4 lg:content-stretch lg:items-stretch lg:gap-y-0">
-                        <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                          <h4 className="text-sm font-semibold leading-[1.3]">
-                            Damen
-                          </h4>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 1"
-                                className="shrink-0"
-                              />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Nachtwäsche</h5>
-                              <p className="hidden text-sm md:block">
-                                Seide und Baumwolle für ruhige Nächte
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 2"
-                                className="shrink-0"
-                              />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Unterwäsche</h5>
-                              <p className="hidden text-sm md:block">
-                                Klassische Formen aus Italien und Frankreich
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 3"
-                                className="shrink-0"
-                              />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">
-                                Dessous & Lingerie
-                              </h5>
-                              <p className="hidden text-sm md:block">
-                                Handwerk, das man spürt
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 4"
-                                className="shrink-0"
-                              />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Bademode</h5>
-                              <p className="hidden text-sm md:block">
-                                Schnitte für jeden Körper
-                              </p>
-                            </div>
-                          </a>
-                        </div>
-                        <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                          <h4 className="text-sm font-semibold leading-[1.3]">
-                            Italienische Mode
-                          </h4>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 5"
-                                className="shrink-0"
-                              />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">
-                                Hemden, Hosen, Jacken vom Lago Maggiore
-                              </h5>
-                              <p className="hidden text-sm md:block">Herren</p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 6"
-                                className="shrink-0"
-                              />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Nachtwäsche</h5>
-                              <p className="hidden text-sm md:block">
-                                Feine Materialien für erholsamen Schlaf
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 7"
-                                className="shrink-0"
-                              />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Unterwäsche</h5>
-                              <p className="hidden text-sm md:block">
-                                Präzision und Komfort vereint
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 8"
-                                className="shrink-0"
-                              />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Bademode</h5>
-                              <p className="hidden text-sm md:block">
-                                Schnitte, die passen
-                              </p>
-                            </div>
-                          </a>
-                        </div>
-                        <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                          <h4 className="text-sm font-semibold leading-[1.3]">
-                            Italienische Mode
-                          </h4>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 9"
-                                className="shrink-0"
-                              />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">
-                                Hemden und Hosen von Meistern
-                              </h5>
-                              <p className="hidden text-sm md:block">
-                                Highlights
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 10"
-                                className="shrink-0"
-                              />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">
-                                Aktuelle Angebote und Saison-Neuheiten
-                              </h5>
-                              <p className="hidden text-sm md:block">
-                                Beratung
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 11"
-                                className="shrink-0"
-                              />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">
-                                Persönliche Betreuung in der Boutique
-                              </h5>
-                              <p className="hidden text-sm md:block">
-                                Boutique
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 12"
-                                className="shrink-0"
-                              />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">
-                                Übersee am Chiemsee, Bayern
-                              </h5>
-                              <p className="hidden text-sm md:block">
-                                Termin vereinbaren
-                              </p>
-                            </div>
-                          </a>
-                        </div>
-                        <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                          <h4 className="text-sm font-semibold leading-[1.3]">
-                            Service
-                          </h4>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 13"
-                                className="shrink-0"
-                              />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Termin</h5>
-                              <p className="hidden text-sm md:block">
-                                Einen Besuch planen
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 14"
-                                className="shrink-0"
-                              />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Kontakt</h5>
-                              <p className="hidden text-sm md:block">
-                                Fragen stellen
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 15"
-                                className="shrink-0"
-                              />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Journal</h5>
-                              <p className="hidden text-sm md:block">
-                                Geschichten und Tipps
-                              </p>
-                            </div>
-                          </a>
-                          <a
-                            href="#"
-                            className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                          >
-                            <div className="flex size-6 flex-col items-center justify-center">
-                              <img
-                                src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                alt="Icon 16"
-                                className="shrink-0"
-                              />
-                            </div>
-                            <div className="flex flex-col items-start justify-center">
-                              <h5 className="font-semibold">Impressum</h5>
-                              <p className="hidden text-sm md:block">
-                                Rechtliche Informationen
-                              </p>
-                            </div>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="relative mb-6 flex w-full flex-col items-start justify-between p-6 sm:items-center lg:mb-0 lg:flex-row lg:px-0 lg:py-4">
-                    <div className="absolute -left-[50vw] -right-[50vw] bottom-0 top-0 w-[200vw] bg-background-secondary" />
-                    <div className="relative mb-4 grid auto-cols-fr grid-cols-[max-content] grid-rows-[auto_auto] items-center gap-x-2 gap-y-4 lg:mb-0 lg:flex lg:items-center">
-                      <p>
-                        Besuchen Sie uns in Übersee am Chiemsee
-                        <a href="#" className="ml-1 underline">
-                          Termin vereinbaren
-                        </a>
-                      </p>
-                    </div>
-                    <div className="relative flex w-full flex-col gap-6 sm:w-auto sm:flex-row">
-                      <Button
-                        title="DE"
-                        variant="link"
-                        size="link"
-                        image={{
-                          src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-                          alt: "Button icon 1",
-                        }}
-                      >
-                        <img
-                          src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                          alt="Button icon 1"
-                          className="size-6 shrink-0"
-                        />
-                        DE
-                      </Button>
-                      <Button
-                        title="EN"
-                        variant="link"
-                        size="link"
-                        image={{
-                          src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-                          alt: "Button icon 2",
-                        }}
-                      >
-                        <img
-                          src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                          alt="Button icon 2"
-                          className="size-6 shrink-0"
-                        />
-                        EN
-                      </Button>
-                    </div>
-                  </div>
-                </motion.nav>
-              </AnimatePresence>
-            </div>
-          </div>
-          <div className="flex items-center gap-4">
-            <Button title="Termin" variant="secondary" size="sm">
-              Termin
-            </Button>
-            <Button title="Menü" size="sm">
-              Menü
-            </Button>
-          </div>
-        </div>
+      <div className="flex flex-col py-2">
+        {links.map((link) => (
+          <button
+            key={link.label}
+            onClick={() => navigate(link.href)}
+            className="px-5 py-2.5 text-sm hover:bg-gray-50 transition-colors text-left"
+            style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "inherit" }}
+          >
+            {link.label}
+          </button>
+        ))}
+        <div className="mx-5 my-2 border-t border-border-primary" />
         <button
-          className="-mr-2 flex size-12 cursor-pointer flex-col items-center justify-center lg:hidden"
-          onClick={useActive.toggleMobileMenu}
+          onClick={() => navigate(allHref)}
+          className="px-5 py-2.5 text-sm font-medium hover:bg-gray-50 transition-colors text-left"
+          style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "inherit" }}
         >
-          <motion.span
-            className="my-[3px] h-0.5 w-6 bg-black"
-            animate={useActive.animateMobileMenuButtonSpan}
-            variants={{
-              open: { translateY: 8, transition: { delay: 0.1 } },
-              rotatePhase: { rotate: -45, transition: { delay: 0.2 } },
-              closed: {
-                translateY: 0,
-                rotate: 0,
-                transition: { duration: 0.2 },
-              },
-            }}
-          />
-          <motion.span
-            className="my-[3px] h-0.5 w-6 bg-black"
-            animate={useActive.animateMobileMenu}
-            variants={{
-              open: { width: 0, transition: { duration: 0.1 } },
-              closed: {
-                width: "1.5rem",
-                transition: { delay: 0.3, duration: 0.2 },
-              },
-            }}
-          />
-          <motion.span
-            className="my-[3px] h-0.5 w-6 bg-black"
-            animate={useActive.animateMobileMenuButtonSpan}
-            variants={{
-              open: { translateY: -8, transition: { delay: 0.1 } },
-              rotatePhase: { rotate: 45, transition: { delay: 0.2 } },
-              closed: {
-                translateY: 0,
-                rotate: 0,
-                transition: { duration: 0.2 },
-              },
-            }}
-          />
+          Alles ansehen →
         </button>
       </div>
+    </motion.div>
+  );
+}
+
+function NavItemWithDropdown({ label, href, links, allHref, navigate }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button
+        onClick={() => navigate(href)}
+        className="block px-4 py-6 text-base hover:opacity-60 transition-opacity"
+        style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", color: "#1a1a1a" }}
+        style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "inherit" }}
+      >
+        {label}
+      </button>
       <AnimatePresence>
-        <motion.div
-          variants={{ open: { height: "100dvh" }, close: { height: "auto" } }}
-          animate={useActive.animateMobileMenu}
-          initial="close"
-          exit="close"
-          className="absolute left-0 right-0 top-full w-full overflow-hidden lg:hidden"
-          transition={{ duration: 0.4 }}
+        {open && <DropdownMenu links={links} allHref={allHref} navigate={navigate} />}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+export function Navbar7() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  return (
+    <section className="relative z-[999] flex min-h-16 w-full items-center bg-transparent px-[5%] md:min-h-18">
+      <div className="mx-auto flex size-full max-w-full items-center justify-between">
+        {/* Logo */}
+        <button onClick={() => navigate("/")} className="text-2xl font-bold tracking-tight text-white"
+          style={{ background: "none", border: "none", cursor: "pointer" }}>
+        </button>
+
+        {/* Desktop Nav */}
+        <nav className="hidden lg:flex lg:items-center lg:gap-1 ml-40">
+          <NavItemWithDropdown label="Damen"  href="/damen"  links={damenLinks}  allHref="/damen/alle"  navigate={navigate} />
+          <NavItemWithDropdown label="Herren" href="/herren" links={herrenLinks} allHref="/herren/alle" navigate={navigate} />
+          {simpleLinks.map((link) => (
+            <button
+              key={link.label}
+              onClick={() => navigate(link.href)}
+              className="px-4 py-6 text-base hover:opacity-60 transition-opacity"
+              style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", color: "#1a1a1a" }}
+            >
+              {link.label}
+            </button>
+          ))}
+        </nav>
+
+        <div className="hidden lg:block w-32" />
+
+        {/* Mobile Hamburger */}
+        <button
+          className="-mr-2 flex size-12 cursor-pointer flex-col items-center justify-center lg:hidden"
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
         >
+          <motion.span className="my-[3px] h-0.5 w-6 bg-[#1a1a1a]"
+            animate={isMobileMenuOpen ? { translateY: 8, rotate: -45 } : { translateY: 0, rotate: 0 }}
+            transition={{ duration: 0.3 }} />
+          <motion.span className="my-[3px] h-0.5 w-6 bg-[#1a1a1a]"
+            animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+            transition={{ duration: 0.2 }} />
+          <motion.span className="my-[3px] h-0.5 w-6 bg-[#1a1a1a]"
+            animate={isMobileMenuOpen ? { translateY: -8, rotate: 45 } : { translateY: 0, rotate: 0 }}
+            transition={{ duration: 0.3 }} />
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
           <motion.div
-            variants={{ open: { y: 0 }, close: { y: "-100%" } }}
-            animate={useActive.animateMobileMenu}
-            initial="close"
-            exit="close"
-            transition={{ duration: 0.4 }}
-            className="absolute left-0 right-0 top-0 block h-dvh overflow-auto border-b border-border-primary bg-background-primary px-[5%] pb-8 pt-4"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="absolute left-0 right-0 top-full border-b border-border-primary bg-background-primary px-[5%] pb-8 pt-4 lg:hidden"
           >
             <div className="flex flex-col">
-              <a href="#" className="block py-3 text-md">
-                Link One
-              </a>
-              <a href="#" className="block py-3 text-md">
-                Link Two
-              </a>
-              <a href="#" className="block py-3 text-md">
-                Link Three
-              </a>
-              <div>
-                <button
-                  className="relative flex w-full items-center justify-between whitespace-nowrap py-3 text-md lg:w-auto lg:justify-start lg:gap-2 lg:px-4 lg:py-6 lg:text-base"
-                  onClick={useActive.openOnMobileDropdownMenu}
-                >
-                  <span>Link Four</span>
-                  <motion.span
-                    animate={useActive.animateDropdownMenuIcon}
-                    variants={{
-                      rotated: { rotate: 180 },
-                      initial: { rotate: 0 },
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <RxChevronDown />
-                  </motion.span>
+              <p className="py-2 text-xs font-semibold uppercase tracking-widest text-gray-400">Damen</p>
+              {damenLinks.map((link) => (
+                <button key={link.label} onClick={() => { navigate(link.href); setIsMobileMenuOpen(false); }}
+                  className="py-2.5 text-md border-b border-border-primary text-left"
+                  style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "inherit" }}>
+                  {link.label}
                 </button>
-                <AnimatePresence>
-                  <motion.nav
-                    variants={{
-                      open: {
-                        opacity: 1,
-                        height: "var(--height-open, auto)",
-                        display: "block",
-                      },
-                      close: {
-                        opacity: 0,
-                        height: "var(--height-close, 0)",
-                        display: "none",
-                      },
-                    }}
-                    animate={useActive.animateDropdownMenu}
-                    initial="close"
-                    exit="close"
-                    transition={{ duration: 0.2 }}
-                    className="bottom-auto left-0 top-full w-full min-w-full max-w-full overflow-hidden bg-background-primary lg:absolute lg:w-screen lg:border-b lg:border-border-primary lg:px-[5%] lg:[--height-close:auto]"
-                  >
-                    <div className="mx-auto flex size-full max-w-full items-center justify-between">
-                      <div className="flex w-full flex-col lg:flex-row">
-                        <div className="grid flex-1 grid-cols-1 content-start items-start gap-x-8 gap-y-6 py-4 md:grid-cols-2 md:py-8 lg:auto-cols-fr lg:grid-cols-4 lg:content-stretch lg:items-stretch lg:gap-y-0">
-                          <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                            <h4 className="text-sm font-semibold leading-[1.3]">
-                              Page group one
-                            </h4>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 1"
-                                  className="shrink-0"
-                                />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page One</h5>
-                                <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 2"
-                                  className="shrink-0"
-                                />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Two</h5>
-                                <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 3"
-                                  className="shrink-0"
-                                />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Three</h5>
-                                <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 4"
-                                  className="shrink-0"
-                                />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page four</h5>
-                                <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
-                                </p>
-                              </div>
-                            </a>
-                          </div>
-                          <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                            <h4 className="text-sm font-semibold leading-[1.3]">
-                              Page group two
-                            </h4>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 5"
-                                  className="shrink-0"
-                                />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Five</h5>
-                                <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 6"
-                                  className="shrink-0"
-                                />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Six</h5>
-                                <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 7"
-                                  className="shrink-0"
-                                />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Seven</h5>
-                                <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 8"
-                                  className="shrink-0"
-                                />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Eight</h5>
-                                <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
-                                </p>
-                              </div>
-                            </a>
-                          </div>
-                          <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                            <h4 className="text-sm font-semibold leading-[1.3]">
-                              Page group three
-                            </h4>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 9"
-                                  className="shrink-0"
-                                />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Nine</h5>
-                                <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 10"
-                                  className="shrink-0"
-                                />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Ten</h5>
-                                <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 11"
-                                  className="shrink-0"
-                                />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Eleven</h5>
-                                <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 12"
-                                  className="shrink-0"
-                                />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Twelve</h5>
-                                <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
-                                </p>
-                              </div>
-                            </a>
-                          </div>
-                          <div className="grid auto-cols-fr grid-cols-1 grid-rows-[max-content_max-content_max-content_max-content_max-content] gap-y-2 md:gap-y-4">
-                            <h4 className="text-sm font-semibold leading-[1.3]">
-                              Page group four
-                            </h4>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 13"
-                                  className="shrink-0"
-                                />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Thirteen</h5>
-                                <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 14"
-                                  className="shrink-0"
-                                />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Fourteen</h5>
-                                <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 15"
-                                  className="shrink-0"
-                                />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Fifteen</h5>
-                                <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
-                                </p>
-                              </div>
-                            </a>
-                            <a
-                              href="#"
-                              className="grid w-full auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2"
-                            >
-                              <div className="flex size-6 flex-col items-center justify-center">
-                                <img
-                                  src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                                  alt="Icon 16"
-                                  className="shrink-0"
-                                />
-                              </div>
-                              <div className="flex flex-col items-start justify-center">
-                                <h5 className="font-semibold">Page Sixteen</h5>
-                                <p className="hidden text-sm md:block">
-                                  Lorem ipsum dolor sit amet consectetur elit
-                                </p>
-                              </div>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="relative mb-6 flex w-full flex-col items-start justify-between p-6 sm:items-center lg:mb-0 lg:flex-row lg:px-0 lg:py-4">
-                      <div className="absolute -left-[50vw] -right-[50vw] bottom-0 top-0 w-[200vw] bg-background-secondary" />
-                      <div className="relative mb-4 grid auto-cols-fr grid-cols-[max-content] grid-rows-[auto_auto] items-center gap-x-2 gap-y-4 lg:mb-0 lg:flex lg:items-center">
-                        <p>
-                          Ready to get started?
-                          <a href="#" className="ml-1 underline">
-                            Sign up for free
-                          </a>
-                        </p>
-                      </div>
-                      <div className="relative flex w-full flex-col gap-6 sm:w-auto sm:flex-row">
-                        <Button
-                          title="Button"
-                          variant="link"
-                          size="link"
-                          image={{
-                            src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-                            alt: "Button icon 1",
-                          }}
-                        >
-                          <img
-                            src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                            alt="Button icon 1"
-                            className="size-6 shrink-0"
-                          />
-                          Button
-                        </Button>
-                        <Button
-                          title="Button"
-                          variant="link"
-                          size="link"
-                          image={{
-                            src: "https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg",
-                            alt: "Button icon 2",
-                          }}
-                        >
-                          <img
-                            src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                            alt="Button icon 2"
-                            className="size-6 shrink-0"
-                          />
-                          Button
-                        </Button>
-                      </div>
-                    </div>
-                  </motion.nav>
-                </AnimatePresence>
-              </div>
-              <div className="mt-6 flex flex-col gap-4">
-                <Button title="Button" variant="secondary" size="sm">
-                  Button
-                </Button>
-                <Button title="Button" size="sm">
-                  Button
-                </Button>
+              ))}
+              <button onClick={() => { navigate("/damen/alle"); setIsMobileMenuOpen(false); }}
+                className="py-2.5 text-md border-b border-border-primary font-medium text-left"
+                style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "inherit" }}>
+                Alles ansehen →
+              </button>
+
+              <p className="mt-4 py-2 text-xs font-semibold uppercase tracking-widest text-gray-400">Herren</p>
+              {herrenLinks.map((link) => (
+                <button key={link.label} onClick={() => { navigate(link.href); setIsMobileMenuOpen(false); }}
+                  className="py-2.5 text-md border-b border-border-primary text-left"
+                  style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "inherit" }}>
+                  {link.label}
+                </button>
+              ))}
+              <button onClick={() => { navigate("/herren/alle"); setIsMobileMenuOpen(false); }}
+                className="py-2.5 text-md border-b border-border-primary font-medium text-left"
+                style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "inherit" }}>
+                Alles ansehen →
+              </button>
+
+              <div className="mt-4 flex flex-col">
+                {simpleLinks.map((link) => (
+                  <button key={link.label} onClick={() => { navigate(link.href); setIsMobileMenuOpen(false); }}
+                    className="py-2.5 text-md border-b border-border-primary last:border-none text-left"
+                    style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "inherit" }}>
+                    {link.label}
+                  </button>
+                ))}
               </div>
             </div>
           </motion.div>
-        </motion.div>
+        )}
       </AnimatePresence>
     </section>
   );

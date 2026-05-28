@@ -1,37 +1,85 @@
 "use client";
 
-import { Button } from "@relume_io/relume-ui";
 import React from "react";
 
 export function Header30() {
   return (
-    <section id="relume" className="relative px-[5%]">
-      <div className="container relative z-10">
-        <div className="flex max-h-[60rem] min-h-svh items-center justify-center py-16 text-center md:py-24 lg:py-28">
-          <div className="w-full max-w-lg">
-            <h1 className="mb-5 text-6xl font-bold text-text-alternative md:mb-6 md:text-9xl lg:text-10xl">
-              Wäsche, die man fühlt.
-            </h1>
-            <p className="text-text-alternative md:text-md">
-              Übersee am Chiemsee. Seit Jahren die Adresse für Qualität und
-              Beratung.
-            </p>
-            <div className="mt-6 flex items-center justify-center gap-x-4 md:mt-8">
-              <Button title="Damen entdecken">Damen entdecken</Button>
-              <Button title="Herren entdecken" variant="secondary-alt">
-                Herren entdecken
-              </Button>
-            </div>
-          </div>
+    <section style={{ background: "#fff", position: "relative" }}>
+      <div style={{ margin: "0 12%", position: "relative" }}>
+
+        {/* Layer 1 — Original photos */}
+        <div style={{ display: "flex", gap: 0, height: "100vh", position: "relative", zIndex: 1 }}>
+          <img
+            src="/images/bild1.jpeg"
+            alt=""
+            style={{ flex: 1, objectFit: "cover", objectPosition: "top center", display: "block" }}
+          />
+          <img
+            src="/images/bild2.jpeg?v=bild3"
+            alt=""
+            style={{ flex: 1, objectFit: "cover", objectPosition: "top center", display: "block" }}
+          />
         </div>
-      </div>
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-          className="size-full object-cover"
-          alt="Relume placeholder image"
-        />
-        <div className="absolute inset-0 bg-black/50" />
+
+        {/* Layer 2 — BETTHUPFERL Text */}
+        <span
+          style={{
+            fontFamily: "'Bodoni Moda', serif",
+            fontSize: "11.8vw",
+            fontWeight: 900,
+            lineHeight: 0.82,
+            color: "#000",
+            whiteSpace: "nowrap",
+            letterSpacing: "-0.01em",
+            position: "absolute",
+            top: "15%",
+            left: "-10vw",
+            transform: "scaleY(1.5)",
+            transformOrigin: "top left",
+            zIndex: 10,
+            userSelect: "none",
+            pointerEvents: "none",
+          }}
+        >
+          BETTHUPFERL
+        </span>
+
+        {/* Layer 3 — Freigestellte Personen über dem Text */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            zIndex: 20,
+            display: "flex",
+            gap: 0,
+            pointerEvents: "none",
+          }}
+        >
+          <img
+            src="/images/person1.png"
+            alt=""
+            style={{
+              flex: 1,
+              objectFit: "cover",
+              objectPosition: "top center",
+              display: "block",
+            }}
+          />
+          <img
+            src="/images/person2.png?v=clean10"
+            alt=""
+            style={{
+              flex: 1,
+              objectFit: "cover",
+              objectPosition: "top center",
+              display: "block",
+            }}
+          />
+        </div>
+
       </div>
     </section>
   );

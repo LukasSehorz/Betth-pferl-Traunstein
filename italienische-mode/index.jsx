@@ -1,28 +1,34 @@
 import React from "react";
-import { Navbar7 } from "./components/Navbar7";
-import { Header64 } from "./components/Header64";
-import { Layout298 } from "./components/Layout298";
-import { Layout237 } from "./components/Layout237";
-import { Layout502 } from "./components/Layout502";
-import { Cta33 } from "./components/Cta33";
-import { Cta58 } from "./components/Cta58";
-import { Faq9 } from "./components/Faq9";
-import { Header64_1 } from "./components/Header64_1";
-import { Footer1 } from "./components/Footer1";
+import KategoriePage from "../shared/KategoriePage";
 
-export default function Page() {
+const products = [
+  { name: "Seiden-Bluse",       material: "Seide",     img: null, route: null },
+  { name: "Leinenhose",         material: "Leinen",    img: null, route: null },
+  { name: "Sommer-Kleid",       material: "Viskose",   img: null, route: null },
+  { name: "Seiden-Rock",        material: "Seide",     img: null, route: null },
+
+  { name: "Leinen-Blazer",      material: "Leinen",    img: null, route: null },
+  { name: "Seiden-Top",         material: "Seide",     img: null, route: null },
+  { name: "Baumwoll-Kleid",     material: "Baumwolle", img: null, route: null },
+  { name: "Viskose-Bluse",      material: "Viskose",   img: null, route: null },
+
+  { name: "Leinen-Kleid",       material: "Leinen",    img: null, route: null },
+  { name: "Seiden-Palazzo",     material: "Seide",     img: null, route: null },
+  { name: "Baumwoll-Bluse",     material: "Baumwolle", img: null, route: null },
+  { name: "Viskose-Rock",       material: "Viskose",   img: null, route: null },
+
+  { name: "Seiden-Jumpsuit",    material: "Seide",     img: null, route: null },
+  { name: "Leinen-Top",         material: "Leinen",    img: null, route: null },
+  { name: "Sommer-Blazer",      material: "Leinen",    img: null, route: null },
+  { name: "Viskose-Kleid",      material: "Viskose",   img: null, route: null },
+];
+
+export default function ItalienischeMode() {
   return (
-    <div>
-      <Navbar7 />
-      <Header64 />
-      <Layout298 />
-      <Layout237 />
-      <Layout502 />
-      <Cta33 />
-      <Cta58 />
-      <Faq9 />
-      <Header64_1 />
-      <Footer1 />
-    </div>
+    <KategoriePage
+      title="Italienische Mode"
+      products={products}
+      bannerImgs={[null, null, null]}
+    />
   );
 }

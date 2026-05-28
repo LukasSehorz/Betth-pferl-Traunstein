@@ -1,24 +1,19 @@
 import React from "react";
-import { Navbar7 } from "./components/Navbar7";
-import { Header64 } from "./components/Header64";
-import { Layout16 } from "./components/Layout16";
-import { Layout312 } from "./components/Layout312";
-import { Layout457 } from "./components/Layout457";
-import { Logo3 } from "./components/Logo3";
-import { Cta33 } from "./components/Cta33";
-import { Footer1 } from "./components/Footer1";
+import KategoriePage from "../shared/KategoriePage";
 
-export default function Page() {
+const products = [
+  { name: "Unterwäsche", material: "bruno banani", img: "/images/bild53.png", route: "/herren-unterwaesche" },
+  { name: "Bademode",    material: "bruno banani", img: "/images/bild54.png", route: "/herren-bademode" },
+  { name: "Bademode",    material: "bruno banani", img: "/images/bild55.png", route: "/herren-bademode" },
+  { name: "Bademode",    material: "bruno banani", img: "/images/bild56.png", route: "/herren-bademode" },
+];
+
+export default function Herren() {
   return (
-    <div>
-      <Navbar7 />
-      <Header64 />
-      <Layout16 />
-      <Layout312 />
-      <Layout457 />
-      <Logo3 />
-      <Cta33 />
-      <Footer1 />
-    </div>
+    <KategoriePage
+      title="Herren"
+      products={products}
+      bannerImgs={[]}
+    />
   );
 }
