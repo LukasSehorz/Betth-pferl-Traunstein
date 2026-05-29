@@ -44,8 +44,8 @@ export function IntroScreen({ onDone }) {
         fontSize: "clamp(1.8rem, 4vw, 3.2rem)",
         color: "#7A1528",
         letterSpacing: "0.1em",
-        animation: "revealLine 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards",
-        clipPath: "inset(0 100% 0 0)",
+        textAlign: "center",
+        animation: "revealLine 1.6s cubic-bezier(0.4, 0, 0.2, 1) both",
       }}>
         Das Betthupferl Traunstein
       </h1>
@@ -66,6 +66,7 @@ export function IntroScreen({ onDone }) {
         fontSize: "clamp(0.9rem, 2vw, 1.3rem)",
         color: "#7A1528",
         letterSpacing: "0.08em",
+        textAlign: "center",
         clipPath: showLine2 ? "inset(0 0% 0 0)" : "inset(0 100% 0 0)",
         transition: showLine2 ? "clip-path 2.2s cubic-bezier(0.4, 0, 0.2, 1)" : "none",
       }}>
