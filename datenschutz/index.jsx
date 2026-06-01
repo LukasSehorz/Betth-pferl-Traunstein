@@ -66,12 +66,17 @@ export default function Datenschutz() {
           </p>
         </Section>
 
-        <Section title="4. Cookies">
+        <Section title="4. Cookies und lokaler Speicher">
           <p style={{ margin: "0 0 0.8rem" }}>
-            Diese Website verwendet ausschließlich technisch notwendige Cookies (Session-Storage), die für den ordnungsgemäßen Betrieb der Website erforderlich sind. Es werden keine Tracking-Cookies oder Cookies zu Werbezwecken eingesetzt.
+            Diese Website verwendet keinen Cookie-Tracking zu Werbezwecken und kein Analyse-Tracking. Es kommen folgende Speichertechnologien zum Einsatz:
           </p>
+          <p style={{ margin: "0 0 0.5rem", fontWeight: 500, color: "#1a1a1a" }}>Technisch notwendig (kein Consent erforderlich)</p>
+          <p style={{ margin: "0 0 1rem" }}>
+            <strong>Session Storage:</strong> Dient dazu, die Intro-Animation der Startseite nur beim ersten Seitenaufruf je Sitzung anzuzeigen. Die Daten werden ausschließlich lokal im Browser gespeichert, nicht an uns übermittelt und beim Schließen des Tabs gelöscht.
+          </p>
+          <p style={{ margin: "0 0 0.5rem", fontWeight: 500, color: "#1a1a1a" }}>Nur nach Ihrer Einwilligung</p>
           <p style={{ margin: 0 }}>
-            Die verwendeten Session-Storage-Einträge dienen dazu, die Intro-Animation der Website nur beim ersten Besuch einer Sitzung anzuzeigen. Diese Daten werden ausschließlich lokal in Ihrem Browser gespeichert und nicht an uns übermittelt. Sie werden gelöscht, sobald Sie den Browser schließen.
+            <strong>Local Storage (Cookie-Einwilligung):</strong> Ihre Entscheidung zu den Cookie-Einstellungen wird im Local Storage des Browsers gespeichert, damit Sie nicht bei jedem Besuch erneut gefragt werden. Diese Daten verlassen nicht Ihren Browser. Die Einwilligung kann jederzeit über das Cookie-Symbol (🍪) unten links auf der Seite widerrufen werden.
           </p>
         </Section>
 
@@ -106,8 +111,12 @@ export default function Datenschutz() {
 
         <Section title="8. Externe Dienste">
           <p style={{ margin: "0 0 0.8rem", fontWeight: 500, color: "#1a1a1a" }}>Google Maps</p>
+          <p style={{ margin: "0 0 1.2rem" }}>
+            Diese Website nutzt den Kartendienst Google Maps der Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA (im EWR: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland). Google Maps wird auf der Boutique-Seite nur geladen, wenn Sie der Nutzung externer Dienste zugestimmt haben. Ohne Ihre Einwilligung wird die Karte nicht geladen und es werden keine Daten an Google übertragen. Bei Erteilung der Einwilligung werden Daten (insbesondere Ihre IP-Adresse) an Google übertragen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Die Einwilligung kann jederzeit über das Cookie-Symbol (🍪) unten links auf der Seite widerrufen werden. Näheres entnehmen Sie der Datenschutzerklärung von Google: <span style={{ color: "#7A1528" }}>https://policies.google.com/privacy</span>
+          </p>
+          <p style={{ margin: "0 0 0.8rem", fontWeight: 500, color: "#1a1a1a" }}>Webfonts (Schriftarten)</p>
           <p style={{ margin: 0 }}>
-            Diese Website nutzt den Kartendienst Google Maps der Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA (im EWR: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland). Bei Aufruf der Seiten, auf denen Google Maps eingebunden ist, werden Daten an Google übertragen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer ansprechenden Darstellung des Standorts). Näheres entnehmen Sie der Datenschutzerklärung von Google: <span style={{ color: "#7A1528" }}>https://policies.google.com/privacy</span>. Google Fonts werden lokal eingebunden, sodass keine Daten an Google übertragen werden.
+            Diese Website verwendet die Schriftarten Cormorant Garamond, Playfair Display und Bodoni Moda. Diese Schriften sind vollständig lokal auf unserem Server eingebunden. Es findet keine Verbindung zu externen Servern (z. B. Google Fonts) statt. Es werden keine personenbezogenen Daten (insbesondere keine IP-Adresse) an Dritte übertragen.
           </p>
         </Section>
 

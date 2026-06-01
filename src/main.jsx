@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import "./fonts.css";
 import "./index.css";
 import "./hover.css";
 import { CookieBanner } from "../shared/CookieBanner";

@@ -3,6 +3,7 @@ import { Footer } from "../startseite/components/Footer";
 import { useFadeUp, useStaggerFadeUp } from "../shared/useGsap";
 import { useIsMobile } from "../shared/useIsMobile";
 import { PageNavbar } from "../shared/PageNavbar";
+import { useCookieConsent } from "../shared/CookieBanner";
 
 const galleryImages = [
   { img: "/images/bild31.jpg", tall: true },
@@ -18,6 +19,7 @@ export default function Boutique() {
   const introRef = useFadeUp();
   const galleryRef = useStaggerFadeUp(0.08);
   const infoRef = useFadeUp(0.1);
+  const { externalAllowed } = useCookieConsent();
 
   return (
     <div style={{ background: "#f5f1eb", fontFamily: "'Cormorant Garamond', serif" }}>
@@ -114,18 +116,30 @@ export default function Boutique() {
           </div>
         </div>
 
-        {/* Right: Google Maps */}
-        <div style={{ position: "relative" }}>
-          <iframe
-            title="Betthupferl Traunstein"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2677.3!2d12.6431!3d47.8678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477690b0e7f2b6b7%3A0x1!2sStadtplatz+12%2C+83278+Traunstein!5e0!3m2!1sde!2sde!4v1"
-            width="100%"
-            height="100%"
-            style={{ border: 0, display: "block", minHeight: isMobile ? "300px" : "520px" }}
-            allowFullScreen=""
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+        {/* Right: Google Maps – nur nach Consent */}
+        <div style={{ position: "relative", background: "#e8e2db", minHeight: isMobile ? "300px" : "520px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          {externalAllowed ? (
+            <iframe
+              title="Betthupferl Traunstein"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2677.3!2d12.6431!3d47.8678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477690b0e7f2b6b7%3A0x1!2sStadtplatz+12%2C+83278+Traunstein!5e0!3m2!1sde!2sde!4v1"
+              width="100%"
+              height="100%"
+              style={{ border: 0, display: "block", minHeight: isMobile ? "300px" : "520px" }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          ) : (
+            <div style={{ textAlign: "center", padding: "2rem", fontFamily: "'Cormorant Garamond', serif" }}>
+              <p style={{ margin: "0 0 0.8rem", fontSize: "0.75rem", letterSpacing: "0.14em", textTransform: "uppercase", color: "#9b6a4a" }}>Karte nicht geladen</p>
+              <p style={{ margin: "0 0 1.2rem", fontSize: "0.95rem", color: "#666", lineHeight: 1.7, maxWidth: "260px" }}>
+                Für die Kartenansicht werden externe Dienste (Google Maps) benötigt. Bitte passen Sie Ihre Cookie-Einstellungen an.
+              </p>
+              <p style={{ margin: 0, fontSize: "0.9rem", color: "#1a1a1a" }}>
+                Stadtpl. 11 · 83278 Traunstein
+              </p>
+            </div>
+          )}
         </div>
 
       </div>
