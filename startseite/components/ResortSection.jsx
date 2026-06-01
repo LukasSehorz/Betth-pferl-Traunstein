@@ -4,9 +4,9 @@ import { useStaggerFadeUp } from "../../shared/useGsap";
 import { useIsMobile } from "../../shared/useIsMobile";
 
 const items = [
-  { tag: "RESORT 2026", title: "Geschenk für sie", img: "/images/bild11.png", route: "/damen/alle" },
-  { tag: "RESORT 2026", title: "Geschenk für ihn", img: "/images/bild12.png", route: "/herren/alle" },
-  { tag: "RESORT 2026", title: "Bademode",          img: "/images/bild13.png", route: "/bademode/alle" },
+  { tag: "RESORT 2026", title: "Geschenk für sie", img: "/images/bild11.jpg", route: "/damen/alle" },
+  { tag: "RESORT 2026", title: "Geschenk für ihn", img: "/images/bild12.jpg", route: "/herren/alle" },
+  { tag: "RESORT 2026", title: "Bademode",          img: "/images/bild13.jpg", route: "/bademode/alle" },
 ];
 
 export function ResortSection() {

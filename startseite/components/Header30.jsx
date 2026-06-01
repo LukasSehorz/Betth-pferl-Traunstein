@@ -59,7 +59,7 @@ export function Header30() {
           }}
         >
           <img
-            src="/images/person1.png"
+            src="/images/person1.jpg"
             alt=""
             style={{
               flex: 1,
@@ -69,7 +69,7 @@ export function Header30() {
             }}
           />
           <img
-            src="/images/person2.png?v=clean10"
+            src="/images/person2.jpg?v=clean10"
             alt=""
             style={{
               flex: 1,

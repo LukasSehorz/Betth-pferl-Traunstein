@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useIsMobile } from "../../shared/useIsMobile";
 
 const items = [
-  { img: "/images/bild58.png", name: "Nachtwäsche",  material: "PIP Studio", route: "/nachtwaesche" },
-  { img: "/images/bild48.png", name: "Nachtwäsche",  material: "PIP Studio", route: "/nachtwaesche" },
+  { img: "/images/bild58.jpg", name: "Nachtwäsche",  material: "PIP Studio", route: "/nachtwaesche" },
+  { img: "/images/bild48.jpg", name: "Nachtwäsche",  material: "PIP Studio", route: "/nachtwaesche" },
 ];
 
 export function DerLookSection() {
@@ -21,7 +21,7 @@ export function DerLookSection() {
       {/* Left / Top: full model image */}
       <div style={{ flex: isMobile ? "none" : "0 0 50%", height: isMobile ? "135vw" : undefined, overflow: "hidden" }}>
         <img
-          src="/images/bild57.png"
+          src="/images/bild57.jpg"
           alt="Der Look"
           style={{ width: "100%", height: "100%", objectFit: isMobile ? "cover" : "contain", objectPosition: "center bottom", display: "block" }}
         />

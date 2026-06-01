@@ -7,14 +7,14 @@ import { PageNavbar } from "../shared/PageNavbar";
 const angebote = [
   {
     large: {
-      img: "/images/bild6.png",
+      img: "/images/bild6.jpg",
       name: "Satin-Morgenmantel",
       oldPrice: "189",
       newPrice: "129",
       route: "/produkt/satin-morgenmantel",
     },
     small: {
-      img: "/images/bild16.png",
+      img: "/images/bild16.jpg",
       name: "Baumwoll-Pyjama",
       oldPrice: "149",
       newPrice: "99",
@@ -24,7 +24,7 @@ const angebote = [
   },
   {
     large: {
-      img: "/images/bild23.png",
+      img: "/images/bild23.jpg",
       name: "Spitzen-Negligé",
       oldPrice: "219",
       newPrice: "159",
@@ -32,7 +32,7 @@ const angebote = [
       objectPosition: "center 20%",
     },
     small: {
-      img: "/images/bild9.png",
+      img: "/images/bild9.jpg",
       name: "Seiden-Nachthemd",
       oldPrice: "259",
       newPrice: "179",
@@ -42,14 +42,14 @@ const angebote = [
   },
   {
     large: {
-      img: "/images/bild11.png",
+      img: "/images/bild11.jpg",
       name: "Seiden-Schlafanzug",
       oldPrice: "299",
       newPrice: "199",
       route: null,
     },
     small: {
-      img: "/images/bild21.png",
+      img: "/images/bild21.jpg",
       name: "Seiden-Kimono",
       oldPrice: "249",
       newPrice: "169",

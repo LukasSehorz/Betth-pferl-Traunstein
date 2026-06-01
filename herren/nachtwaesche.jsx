@@ -2,13 +2,13 @@ import React from "react";
 import KategoriePage from "../shared/KategoriePage";
 
 const products = [
-  { name: "Pyjama Classic",       material: "Baumwolle", img: "/images/bild12.png", route: null },
-  { name: "Baumwoll-Pyjama",      material: "Baumwolle", img: "/images/bild7.png",  route: "/produkt/baumwoll-pyjama" },
+  { name: "Pyjama Classic",       material: "Baumwolle", img: "/images/bild12.jpg", route: null },
+  { name: "Baumwoll-Pyjama",      material: "Baumwolle", img: "/images/bild7.jpg",  route: "/produkt/baumwoll-pyjama" },
   { name: "Seiden-Pyjama",        material: "Seide",     img: null,                 route: null },
   { name: "Modal-Schlafanzug",    material: "Modal",     img: null,                 route: null },
 
   { name: "Bademantel Soft",      material: "Frottee",   img: null,                 route: null },
-  { name: "Satin-Morgenmantel",   material: "Satin",     img: "/images/bild8.png",  route: "/produkt/satin-morgenmantel" },
+  { name: "Satin-Morgenmantel",   material: "Satin",     img: "/images/bild8.jpg",  route: "/produkt/satin-morgenmantel" },
   { name: "Leinen-Pyjama",        material: "Leinen",    img: null,                 route: null },
   { name: "Kaschmir-Schlafanzug", material: "Kaschmir",  img: null,                 route: null },
 

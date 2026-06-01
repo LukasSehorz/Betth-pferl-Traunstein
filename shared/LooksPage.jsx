@@ -47,7 +47,7 @@ function LookCard({ look, onClick }) {
 }
 
 const damenLooks = [
-  { id: "damen-1", name: "Look 1", img: "/images/bild16.png" },
+  { id: "damen-1", name: "Look 1", img: "/images/bild16.jpg" },
   { id: "damen-2", name: "Look 2", img: null },
   { id: "damen-3", name: "Look 3", img: null },
   { id: "damen-4", name: "Look 4", img: null },
@@ -56,7 +56,7 @@ const damenLooks = [
 ];
 
 const herrenLooks = [
-  { id: "herren-1", name: "Look 1", img: "/images/bild17.png" },
+  { id: "herren-1", name: "Look 1", img: "/images/bild17.jpg" },
   { id: "herren-2", name: "Look 2", img: null },
   { id: "herren-3", name: "Look 3", img: null },
   { id: "herren-4", name: "Look 4", img: null },

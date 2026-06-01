@@ -17,7 +17,7 @@ export function EditorialSection() {
 
         {/* Small image */}
         <div className="img-zoom" style={{ width: isMobile ? "55%" : "42%", marginBottom: "2.5rem" }}>
-          <img src="/images/bild21.png" alt="Editorial" style={{ width: "100%", display: "block", objectFit: "cover" }} />
+          <img src="/images/bild21.jpg" alt="Editorial" style={{ width: "100%", display: "block", objectFit: "cover" }} />
         </div>
 
         {/* Title */}
@@ -62,7 +62,7 @@ export function EditorialSection() {
       {/* Right: large full-height image */}
       <div ref={rightRef} style={{ flex: isMobile ? "none" : "0 0 50%", height: isMobile ? "110vw" : undefined, overflow: "hidden" }}>
         <img
-          src="/images/bild23.png"
+          src="/images/bild23.jpg"
           alt="Editorial"
           style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", display: "block" }}
         />

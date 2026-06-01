@@ -2,7 +2,7 @@ from PIL import Image
 import numpy as np
 from collections import deque
 
-img = Image.open("./public/images/person2.png").convert("RGBA")
+img = Image.open("./public/images/person2.jpg").convert("RGBA")
 data = np.array(img, dtype=np.uint8).copy()
 
 a = data[:,:,3]
@@ -29,5 +29,5 @@ for start_y in range(h):
                 for y, x in cluster:
                     data[y, x, 3] = 0
 
-Image.fromarray(data).save("./public/images/person2.png")
+Image.fromarray(data).save("./public/images/person2.jpg")
 print("Fertig!")

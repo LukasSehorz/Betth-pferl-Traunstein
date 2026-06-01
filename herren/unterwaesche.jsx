@@ -23,7 +23,7 @@ export default function HerrenUnterwaesche() {
       <div style={{ padding: "0 4rem 8rem", maxWidth: "900px", margin: "0 auto" }}>
         <div style={{ position: "relative", overflow: "hidden" }}>
           <img
-            src="/images/bild53.png"
+            src="/images/bild53.jpg"
             alt="Unterwäsche"
             style={{ width: "100%", display: "block", objectFit: "cover" }}
           />

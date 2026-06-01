@@ -3,8 +3,8 @@ import sharp from "sharp";
 import { existsSync } from "fs";
 
 for (const [i, file] of [
-  ["./public/images/person1.png", "./public/images/person1.png"],
-  ["./public/images/person2.png", "./public/images/person2.png"],
+  ["./public/images/person1.jpg", "./public/images/person1.jpg"],
+  ["./public/images/person2.jpg", "./public/images/person2.jpg"],
 ].entries()) {
   const [src, dest] = file;
   if (!existsSync(src)) { console.log(`Missing: ${src}`); continue; }

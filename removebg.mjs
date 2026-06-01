@@ -12,6 +12,6 @@ async function removeBg(inputPath, outputPath) {
   console.log(`Saved: ${outputPath}`);
 }
 
-await removeBg("./Bilder/Bild 1.jpeg", "./public/images/person1.png");
-await removeBg("./Bilder/Bild 2.jpeg", "./public/images/person2.png");
+await removeBg("./Bilder/Bild 1.jpeg", "./public/images/person1.jpg");
+await removeBg("./Bilder/Bild 2.jpeg", "./public/images/person2.jpg");
 console.log("Done!");

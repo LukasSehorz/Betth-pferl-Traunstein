@@ -182,7 +182,7 @@ export function HeroCollage() {
           </div>
 
           <img
-            src="/images/bild40.png"
+            src="/images/bild40.jpg"
             alt="Betthupferl"
             style={{ maxWidth: "72%", objectFit: "contain", display: "block" }}
           />
@@ -256,7 +256,7 @@ export function HeroCollage() {
           </nav>
           <div style={{ width: "1.6rem", height: "1px", background: "#7A1528", margin: "0 auto", opacity: 0.5 }} />
         </div>
-        <img src="/images/bild40.png" alt="Betthupferl" style={{ maxWidth: "88%", objectFit: "contain", display: "block" }} />
+        <img src="/images/bild40.jpg" alt="Betthupferl" style={{ maxWidth: "88%", objectFit: "contain", display: "block" }} />
         <div style={{ textAlign: "center" }}>
           <div style={{ width: "1.6rem", height: "1px", background: "#7A1528", margin: "0 auto 0.7rem", opacity: 0.5 }} />
           <p style={{ margin: 0, fontFamily: "'Cormorant Garamond', serif", fontWeight: 300, fontStyle: "italic", fontSize: "clamp(0.85rem, 1.2vw, 1.05rem)", color: "#7A1528", letterSpacing: "0.04em", lineHeight: 1.6 }}>
