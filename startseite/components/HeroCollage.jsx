@@ -154,10 +154,10 @@ export function HeroCollage() {
         {/* Top image row */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3px", height: "42vw" }}>
           <div className="img-zoom" style={{ overflow: "hidden" }}>
-            <img src="/images/bild31.jpg" alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
+            <img src="/images/bild31.jpg" alt="" fetchpriority="high" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
           </div>
           <div className="img-zoom" style={{ overflow: "hidden" }}>
-            <img src="/images/bild33.jpg" alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
+            <img src="/images/bild33.jpg" alt="" fetchpriority="high" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
           </div>
         </div>
 
@@ -230,7 +230,7 @@ export function HeroCollage() {
       overflow: "hidden",
     }}>
       <div className="img-zoom" style={{ gridColumn: "1", gridRow: "1 / 3", overflow: "hidden" }}>
-        <img src="/images/bild31.jpg" alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
+        <img src="/images/bild31.jpg" alt="" fetchpriority="high" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
       </div>
       <div className="img-zoom" style={{ gridColumn: "2", gridRow: "1", overflow: "hidden" }}>
         <img src="/images/bild29.jpg" alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
