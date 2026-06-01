@@ -8,15 +8,16 @@ import { InsideSection } from "./components/InsideSection";
 import { Footer } from "./components/Footer";
 import { IntroScreen } from "./components/IntroScreen";
 
+// Resets on every full page reload, persists during in-app navigation
+let introShown = false;
+
 export default function Page() {
-  const [showIntro, setShowIntro] = useState(() => {
-    try { return !sessionStorage.getItem("intro_shown"); } catch { return true; }
-  });
+  const [showIntro, setShowIntro] = useState(!introShown);
 
   return (
     <div>
       {showIntro && (
-        <IntroScreen onDone={() => { try { sessionStorage.setItem("intro_shown", "1"); } catch {} setShowIntro(false); }} />
+        <IntroScreen onDone={() => { introShown = true; setShowIntro(false); }} />
       )}
       <HeroCollage />
       <ProductSection />
