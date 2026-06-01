@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "./index.css";
 import "./hover.css";
+import { CookieBanner } from "../shared/CookieBanner";
 
 import Startseite from "../startseite/index.jsx";
 import Boutique from "../boutique/index.jsx";
@@ -36,6 +37,7 @@ import SatinMorgenmantel from "../produkt/satin-morgenmantel.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
+      <CookieBanner />
       <Routes>
         <Route path="/" element={<Startseite />} />
         <Route path="/boutique" element={<Boutique />} />
