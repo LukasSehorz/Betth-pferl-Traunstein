@@ -7,7 +7,6 @@ const navLinks = [
   { label: "Marken",              href: "/marken" },
   { label: "Boutique",            href: "/boutique" },
   { label: "Journal",             href: "/journal" },
-  { label: "Highlights & Angebote", href: "/highlights-angebote" },
 ];
 
 export function PageNavbar() {

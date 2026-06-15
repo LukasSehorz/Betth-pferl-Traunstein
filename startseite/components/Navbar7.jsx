@@ -22,7 +22,7 @@ const herrenLinks = [
 ];
 
 const simpleLinks = [
-  { label: "Angebote",  href: "/highlights-angebote" },
+  { label: "Marken",    href: "/marken" },
   { label: "Boutique",  href: "/boutique" },
   { label: "Journal",   href: "/journal" },
 ];
