@@ -68,15 +68,19 @@ export default function Datenschutz() {
 
         <Section title="4. Cookies und lokaler Speicher">
           <p style={{ margin: "0 0 0.8rem" }}>
-            Diese Website verwendet keinen Cookie-Tracking zu Werbezwecken und kein Analyse-Tracking. Es kommen folgende Speichertechnologien zum Einsatz:
+            Diese Website verwendet keine Cookies zu Werbezwecken. Eine anonymisierte Reichweitenmessung mit Google Analytics erfolgt ausschließlich nach Ihrer ausdrücklichen Einwilligung (siehe Punkt 8). Es kommen folgende Speichertechnologien zum Einsatz:
           </p>
           <p style={{ margin: "0 0 0.5rem", fontWeight: 500, color: "#1a1a1a" }}>Technisch notwendig (kein Consent erforderlich)</p>
           <p style={{ margin: "0 0 1rem" }}>
             <strong>Session Storage:</strong> Dient dazu, die Intro-Animation der Startseite nur beim ersten Seitenaufruf je Sitzung anzuzeigen. Die Daten werden ausschließlich lokal im Browser gespeichert, nicht an uns übermittelt und beim Schließen des Tabs gelöscht.
           </p>
+          <p style={{ margin: "0 0 0.5rem", fontWeight: 500, color: "#1a1a1a" }}>Technisch notwendig (kein Consent erforderlich)</p>
+          <p style={{ margin: "0 0 1rem" }}>
+            <strong>Local Storage (Cookie-Einwilligung):</strong> Ihre Entscheidung zu den Cookie-Einstellungen wird im Local Storage des Browsers gespeichert, damit Sie nicht bei jedem Besuch erneut gefragt werden. Diese Daten verlassen nicht Ihren Browser. Die Einwilligung kann jederzeit über das Cookie-Symbol (🍪) unten links auf der Seite widerrufen werden.
+          </p>
           <p style={{ margin: "0 0 0.5rem", fontWeight: 500, color: "#1a1a1a" }}>Nur nach Ihrer Einwilligung</p>
           <p style={{ margin: 0 }}>
-            <strong>Local Storage (Cookie-Einwilligung):</strong> Ihre Entscheidung zu den Cookie-Einstellungen wird im Local Storage des Browsers gespeichert, damit Sie nicht bei jedem Besuch erneut gefragt werden. Diese Daten verlassen nicht Ihren Browser. Die Einwilligung kann jederzeit über das Cookie-Symbol (🍪) unten links auf der Seite widerrufen werden.
+            <strong>Google Analytics (Statistik):</strong> Zur anonymisierten Auswertung des Nutzungsverhaltens setzt Google Analytics Cookies (u. a. <em>_ga</em>, <em>_ga_*</em>) mit einer Speicherdauer von bis zu 2 Jahren. Diese werden erst nach Ihrer Einwilligung gesetzt und bei Widerruf gelöscht. Details siehe Punkt 8.
           </p>
         </Section>
 
@@ -114,6 +118,10 @@ export default function Datenschutz() {
           <p style={{ margin: "0 0 1.2rem" }}>
             Diese Website nutzt den Kartendienst Google Maps der Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA (im EWR: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland). Google Maps wird auf der Boutique-Seite nur geladen, wenn Sie der Nutzung externer Dienste zugestimmt haben. Ohne Ihre Einwilligung wird die Karte nicht geladen und es werden keine Daten an Google übertragen. Bei Erteilung der Einwilligung werden Daten (insbesondere Ihre IP-Adresse) an Google übertragen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Die Einwilligung kann jederzeit über das Cookie-Symbol (🍪) unten links auf der Seite widerrufen werden. Näheres entnehmen Sie der Datenschutzerklärung von Google: <span style={{ color: "#7A1528" }}>https://policies.google.com/privacy</span>
           </p>
+          <p style={{ margin: "0 0 0.8rem", fontWeight: 500, color: "#1a1a1a" }}>Google Analytics</p>
+          <p style={{ margin: "0 0 1.2rem" }}>
+            Diese Website nutzt Google Analytics 4, einen Webanalysedienst der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland („Google"). Google Analytics verwendet Cookies, die eine anonymisierte Analyse Ihrer Nutzung der Website ermöglichen (z. B. aufgerufene Seiten, Verweildauer, ungefährer Standort). Die IP-Anonymisierung ist aktiviert, sodass Ihre IP-Adresse gekürzt verarbeitet wird. Google Analytics wird ausschließlich geladen, wenn Sie zuvor in die statistische Auswertung eingewilligt haben. Ohne Ihre Einwilligung findet keine Analyse statt und es werden keine entsprechenden Cookies gesetzt oder Daten an Google übertragen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Bei der Verarbeitung können Daten in die USA übertragen werden; Google ist unter dem EU-US Data Privacy Framework zertifiziert. Ihre Einwilligung können Sie jederzeit mit Wirkung für die Zukunft über das Cookie-Symbol (🍪) unten links widerrufen. Näheres entnehmen Sie der Datenschutzerklärung von Google: <span style={{ color: "#7A1528" }}>https://policies.google.com/privacy</span>
+          </p>
           <p style={{ margin: "0 0 0.8rem", fontWeight: 500, color: "#1a1a1a" }}>Webfonts (Schriftarten)</p>
           <p style={{ margin: 0 }}>
             Diese Website verwendet die Schriftarten Cormorant Garamond, Playfair Display und Bodoni Moda. Diese Schriften sind vollständig lokal auf unserem Server eingebunden. Es findet keine Verbindung zu externen Servern (z. B. Google Fonts) statt. Es werden keine personenbezogenen Daten (insbesondere keine IP-Adresse) an Dritte übertragen.
@@ -121,7 +129,7 @@ export default function Datenschutz() {
         </Section>
 
         <p style={{ margin: "3rem 0 0", fontSize: "0.82rem", color: "#888", fontFamily: "'Cormorant Garamond', serif" }}>
-          Stand: Mai 2026
+          Stand: Juli 2026
         </p>
 
       </div>

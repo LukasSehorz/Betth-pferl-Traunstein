@@ -5,6 +5,7 @@ import "./fonts.css";
 import "./index.css";
 import "./hover.css";
 import { CookieBanner } from "../shared/CookieBanner";
+import { AnalyticsListener } from "../shared/AnalyticsListener";
 
 import Startseite from "../startseite/index.jsx";
 import Boutique from "../boutique/index.jsx";
@@ -38,6 +39,7 @@ import SatinMorgenmantel from "../produkt/satin-morgenmantel.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
+      <AnalyticsListener />
       <CookieBanner />
       <Routes>
         <Route path="/" element={<Startseite />} />

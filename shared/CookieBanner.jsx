@@ -1,17 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { initAnalytics, trackPageView, disableAnalytics } from "./analytics";
 
 const STORAGE_KEY = "bh_cookie_consent";
+// Version der Einwilligung. Bei Erweiterung der Verarbeitungszwecke (z. B. neue
+// Statistik-Cookies) erhöhen, damit alle Besucher erneut informiert einwilligen.
+const CONSENT_VERSION = 2;
 
 function getConsent() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : null;
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    // Veraltete Einwilligung (andere Version) als "nicht erteilt" behandeln.
+    if (parsed?.v !== CONSENT_VERSION) return null;
+    return parsed;
   } catch { return null; }
 }
 
 function saveConsent(value) {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(value)); } catch {}
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ v: CONSENT_VERSION, ...value })); } catch {}
 }
 
 export function useCookieConsent() {
@@ -19,6 +27,7 @@ export function useCookieConsent() {
   return {
     hasConsented: consent !== null,
     externalAllowed: consent?.external === true,
+    statisticsAllowed: consent?.statistics === true,
   };
 }
 
@@ -38,15 +47,20 @@ export function CookieBanner() {
   }, []);
 
   const acceptAll = () => {
-    saveConsent({ necessary: true, external: true, timestamp: Date.now() });
+    saveConsent({ necessary: true, external: true, statistics: true, timestamp: Date.now() });
     setVisible(false);
     setReopenVisible(true);
+    // Analytics sofort starten und aktuellen Seitenaufruf erfassen.
+    initAnalytics();
+    trackPageView(window.location.pathname + window.location.search);
   };
 
   const acceptNecessary = () => {
-    saveConsent({ necessary: true, external: false, timestamp: Date.now() });
+    saveConsent({ necessary: true, external: false, statistics: false, timestamp: Date.now() });
     setVisible(false);
     setReopenVisible(true);
+    // Bereits geladenes Analytics deaktivieren und Cookies entfernen.
+    disableAnalytics();
   };
 
   const reopen = () => {
@@ -101,7 +115,7 @@ export function CookieBanner() {
                   color: "#1a1a1a",
                   lineHeight: 1.65,
                 }}>
-                  Diese Website verwendet lokalen Speicher für technisch notwendige Funktionen sowie Google Maps auf der Boutique-Seite. Tracking oder Werbung findet nicht statt.
+                  Diese Website verwendet technisch notwendigen lokalen Speicher. Mit Ihrer Einwilligung nutzen wir außerdem Google Maps (Boutique-Seite) sowie Google Analytics, um die Nutzung der Website anonymisiert auszuwerten und zu verbessern. Werbe-Tracking findet nicht statt.
                 </p>
                 <button
                   onClick={() => setShowDetails(d => !d)}
@@ -199,6 +213,12 @@ export function CookieBanner() {
                     badge: "Einwilligung erforderlich",
                     badgeColor: "#9b6a4a",
                     desc: "Kartenansicht auf der Boutique-Seite (Google Maps). Nur nach Ihrer Einwilligung geladen. Dabei wird Ihre IP-Adresse an Google übertragen. Schriftarten sind lokal eingebunden – kein externer Aufruf.",
+                  },
+                  {
+                    title: "Statistik (Google Analytics)",
+                    badge: "Einwilligung erforderlich",
+                    badgeColor: "#9b6a4a",
+                    desc: "Anonymisierte Auswertung des Nutzungsverhaltens (z. B. besuchte Seiten) mit Google Analytics, um die Website zu verbessern. Wird nur nach Ihrer Einwilligung geladen und setzt dann Cookies. Die IP-Adresse wird anonymisiert.",
                   },
                 ].map(cat => (
                   <div key={cat.title} style={{
